@@ -34,6 +34,16 @@ class NumberExample extends Observable {
     this.value = numero1*numero2;
     this.notifyObservable(this);
   }
+
+  sumar(numero1, numero2) {
+    this.value = numero1+numero2;
+    this.notifyObservable(this);
+  }
+  
+  restar(numero1, numero2) {
+    this.value = numero1-numero2;
+    this.notifyObservable(this);
+  }
 }
 
 class par {
@@ -70,3 +80,5 @@ numberExample.subcribe(new primo());
 
 numberExample.dividir(100,20);
 numberExample.multiplicar(2,10);
+numberExample.sumar(2,1);
+numberExample.restar(8,1);
