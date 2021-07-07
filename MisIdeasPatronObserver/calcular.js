@@ -20,7 +20,7 @@ class Observable {
   }
 }
 
-class NumberExample extends Observable {
+class Calculadora extends Observable {
   constructor() {
     super();
     this.value = 0;
@@ -73,12 +73,12 @@ class primo {
     }
   }
 
-let numberExample = new NumberExample();
+let calculadora = new Calculadora();
 
-numberExample.subcribe(new par());
-numberExample.subcribe(new primo());
+calculadora.subcribe(new par());
+calculadora.subcribe(new primo());
 
-numberExample.dividir(100,20);
-numberExample.multiplicar(2,10);
-numberExample.sumar(2,1);
-numberExample.restar(8,1);
+calculadora.dividir(100,20);
+calculadora.multiplicar(2,10);
+calculadora.sumar(2,1);
+calculadora.restar(8,1);

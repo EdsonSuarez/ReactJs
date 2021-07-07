@@ -1,4 +1,4 @@
-//Clase Observadores, se agrega, se elimina y se notifica los cambios a
+//Clase Observable, se agrega, se elimina y se notifica los cambios a
 //cada uno de los observadores.
 class Observable {
   constructor() {
@@ -53,10 +53,10 @@ class NumberExampleEnglish {
 // Crear instancia de la clase observada
 let numberExample = new NumberExample();
 
-// Agregar las clases observadoras, para que puedan observar el objeto observado.
+// Agregar las clases observadoras, para que observen la instancia de la clase observada.
 numberExample.subcribe(new NumberExampleSpanish());
 numberExample.subcribe(new NumberExampleEnglish());
 
-// Incrementar el contador
+// Incrementar el contador, para hacer reaccionar a los observadores
 numberExample.increment();
 numberExample.increment();
