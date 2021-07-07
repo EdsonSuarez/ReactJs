@@ -23,7 +23,7 @@ class Observable {
   }
 }
 
-// Clase observada, es un contador
+// Clase observada, es un contador (hija de Observable)
 class NumberExample extends Observable {
   constructor() {
     super();
@@ -50,7 +50,7 @@ class NumberExampleEnglish {
   }
 }
 
-// Crear objeto observado
+// Crear instancia de la clase observada
 let numberExample = new NumberExample();
 
 // Agregar las clases observadoras, para que puedan observar el objeto observado.

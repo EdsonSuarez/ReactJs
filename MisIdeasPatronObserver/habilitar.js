@@ -20,33 +20,44 @@ class Observable {
     }
   }
   
-  class NumberExample extends Observable {
+  class Habilitar extends Observable {
     constructor() {
       super();
-      this.value = 0;
+      this.value = false;
     }
-    increment() {
-      this.value++;
+    cambiar() {
+      this.value = !this.value;
       this.notifyObservable(this);
     }
   }
   
-  class NumberExampleSpanish {
+  class mostrarResultado {
     notify(model) {
-      console.log(`El nuevo numero es: ${model.value}`);
+      if (model.value) {
+        console.log(`Mostrar resultado: ${model.value}`);
+      } else {
+        console.log(`Ocultar resultado: ${model.value}`);
+      }
+      
     }
   }
   
-  class NumberExampleEnglish {
+  class mostrarBoton {
     notify(model) {
-      console.log(`The new number is: ${model.value}`);
+      if (model.value) {
+        console.log(`Mostrar Boton: ${model.value}`);
+      } else {
+        console.log(`Ocultar Boton: ${model.value}`);
+      }
     }
   }
   
-  let numberExample = new NumberExample();
+  let habilitar = new Habilitar();
   
-  numberExample.subcribe(new NumberExampleSpanish());
-  numberExample.subcribe(new NumberExampleEnglish());
+  habilitar.subcribe(new mostrarResultado());
+  habilitar.subcribe(new mostrarBoton());
   
-  numberExample.increment();
-  numberExample.increment();
+  habilitar.cambiar();
+  habilitar.cambiar();
+  habilitar.cambiar();
+  habilitar.cambiar();
