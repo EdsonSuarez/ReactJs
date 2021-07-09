@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recetas</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // Crear componente de la forma antigua
+      // const ingredienteList = React.createClass({
+      //   displayName = "Lista de ingredientes",
+      //   render(){
+      //     return React.createElement(
+      //       "ul",
+      //       {className: "ingredientes"},
+      //       React.createElement("li", {key: 1}, "Text")
+      //     );
+      //   }
+      // });
+
+      // Crear componente, evolucion de la forma antigua
+
+      // class ListaIngredientes extends React.Component{
+      //   render(){
+      //     return React.createElement(
+      //       "ul",
+      //       {className: "ingredientes"},
+      //        React.createElement("li", {key: 1}, "Text")
+      //      );
+      //   }
+      // }
+
+      // Crear componente - forma actual
+      // function ListaIngredientes(){
+      //     return React.createElement("ul", {className: "ingredientes"},
+      //        React.createElement("li", {key: 1}, "Text")
+      //      )
+      // }
+
+      //jsx
+      // function ListaIngredientes(){
+      //   return(
+      //   <div className= "lista">
+      //     <ul>
+      //       <li>Prueba</li>
+      //     </ul>
+      //   </div>);
+
+      // }
+      // ReactDOM.render(<ListaIngredientes/>, document.getElementById("root"));
+
+      //Aplicacion completa con jsx
+      const data = [
+        {
+          name: "Baked Salmon",
+          ingredients: [
+            { name: "Salmon", amount: 1, measurement: "l lb" },
+            { name: "Pine Nuts", amount: 1, measurement: "cup" },
+            { name: "Butter Lettuce", amount: 2, measurement: "cups" },
+            { name: "Yellow Squash", amount: 1, measurement: "med" },
+            { name: "Olive Oil", amount: 0.5, measurement: "cup" },
+            { name: "Garlic", amount: 3, measurement: "cloves" },
+          ],
+          steps: [
+            "Preheat the oven to 350 degrees.",
+            "Spread the olive oil around a glass baking dish.",
+            "Add the yellow squash and place in the oven for 30 mins.",
+            "Add the salmon, garlic, and pine nuts to the dish.",
+            "Bake for 15 minutes.",
+            "Remove from oven. Add the lettuce and serve.",
+          ],
+        },
+        {
+          name: "Fish Tacos",
+          ingredients: [
+            { name: "Whitefish", amount: 1, measurement: "l lb" },
+            { name: "Cheese", amount: 1, measurement: "cup" },
+            { name: "Iceberg Lettuce", amount: 2, measurement: "cups" },
+            { name: "Tomatoes", amount: 2, measurement: "large" },
+            { name: "Tortillas", amount: 3, measurement: "med" },
+          ],
+          steps: [
+            "Cook the fish on the grill until hot.",
+            "Place the fish on the 3 tortillas.",
+            "Top them with lettuce, tomatoes, and cheese.",
+          ],
+        },
+      ];
+
+      function Menu(props) {
+        return (
+          <article>
+            <header>
+              <h1>{props.titulo}</h1>
+            </header>
+            <div className="recetas">
+              {props.recetas.map((receta,i) => 
+                <Recetas 
+                  key={i}
+                  {...receta }
+                  // name={receta.name}
+                  // ingredients={receta.ingredients}
+                  // steps={receta.steps}
+                  />  
+                )}
+            </div>
+          </article>
+        );
+      }
+
+      function Recetas(props){
+        return(
+          <section>
+            <h1>{props.name}</h1>
+            <ul className="Ingredientes">
+              {props.ingredients.map((ingrediente, i) =>
+                <li key={i}>{ingrediente.name}</li>
+                )}  
+            </ul>
+            <section> 
+              <h2>Instrucciones</h2>
+              {props.steps.map((paso, i) => 
+                <p key={i}>{paso}</p>
+                )}
+            </section>
+          </section>
+            )  
+          }
+
+      ReactDOM.render(<Menu recetas={data} titulo = "Recetas Deliciosas"/>, document.getElementById("root"));
+    </script>
+  </body>
+</html>
